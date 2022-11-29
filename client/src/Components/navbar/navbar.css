@@ -1,0 +1,127 @@
+
+.res{
+    width: max-content;
+    display: flex;
+    margin: auto;
+}
+
+.linkComponent{
+    color: #a0a6a8;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 0 15px;
+}
+.linkComponent:hover{
+    color: #cacbcb;
+}
+
+.profileIMG{
+    width: 30px;
+    height: 30px;
+}
+
+.Login{
+    position: absolute;
+    right: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.loginInfo{
+    position: absolute;
+    right: 15px;
+} 
+
+.clientEdit{
+    color: #0f0f0f;
+    text-decoration: none;
+}
+
+.miCuentaOp{
+    background-color: transparent;
+    color: #b2b2b2;
+    border: 0;
+    position: relative;
+}
+
+.LoginOp{
+    text-align: left;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    padding: 7px 17px;
+    z-index: 200;
+    background-color: #fff;
+    border-radius: 7px;
+    color: #303030;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+.miCuentaOp:focus ~ .LoginOp, .LoginOp:hover{
+    height: max-content;
+    visibility: visible;
+}
+
+
+
+
+@media only screen and (max-width: 770px) {
+    .cont{
+        display: flex;
+        flex-direction: column;
+    }
+    .linkComponent{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+    }
+
+    .nav{
+        height: 0;
+        overflow: hidden;
+    }
+    .act{
+        width: 25px;
+        height: 30px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .act span{
+        position: absolute;
+        width: 100%;
+        border: 1px solid #fff;
+    }
+    .act span:nth-child(1){
+        margin-top: 5px;
+    }
+    .act span:nth-child(2){
+        margin-top: 12px;
+    }
+    .act span:nth-child(3){
+        margin-top: 19px;
+    }
+
+    .but{
+        position: absolute;
+        top: 15px;
+        left: 15px;
+    }
+    .loginInfo{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .Login{
+        top: 25px;
+        right: 10px;
+    }
+    .d-block{
+        margin: auto;
+    }
+}

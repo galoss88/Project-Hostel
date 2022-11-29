@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+.home-container h1{
+  display: inline;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  align-items: center;
+ font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.row{
+  width: 100%;
+  --bs-gutter-x: 0 !important; 
+}
+
+
+.carousel img {
+  width:100%;
+  height: 700px;
+  object-fit: fill;
+  border-radius: 6px;
+}
+
+.collage {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #292b2c;
+}
+
+.collage .img{
+  width: 250px;
+  height: 200px;
+  margin: 7px;
+  z-index: 200;
+  position: relative;
+  overflow: hidden;
+}
+
+.collage  p{
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(to left, #000000c6, #00000000);
+  top: 0;
+  right: -100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.5s;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 10% 13% 0;
+  color: #fff;
+  font-weight: 500;
+  font-size: 20px;
+  justify-content: flex-end;
+}
+.collage .img::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  background-color: #0000005b;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+
+.collage img{
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+
+.collage .img:hover::after, .img:hover p, .img:hover img{
+  transform: scale(1.1);
+  opacity: 1;
+  right: 0;
+}
+
+
+.xd, .xd2, .xd3{
+  position: relative;
+}
+
+.xd::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to top left, #000, #00000029);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.xd2::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to top , #000, #00000029);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.xd3::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to top right, #000, #00000029);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.Bienvenido, .infoHome, .infoHome2{
+  color: #fff;
+  width: max-content;
+  top: 40%;
+  margin: auto;
+  z-index: 300;
+  font-weight: 400;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+
+.infoHome{
+  top: 30%;
+  font-size: 20px;
+  width: 70%;
+}
+
+.infoHome2{
+  top: 30%;
+  font-size: 30px;
+  text-align: left;
+  width: max-content;
+}
+
+.infoHome2 p{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.infoHome2 ul li{
+  font-size: 20px;
+  list-style: none;
+  margin: 3px 0;
+}
+
+.infoHome2 ul li img{
+  width: 20px;
+  height: 20px;
+}
+
+.infoHome2 a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.infoHome2 a:hover{
+  color: #ffffffb9;
+}
+
+.imagenDemo{
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+.demo1, .demo2{
+  opacity: 100%;
+  display: flex;
+  margin: 15px 0;
+  margin-left: 7%;
+  transition: 0.7s ease-in-out all;
+}
+
+.data{
+  margin: 0 30px;
+  max-width: 60%;
+  width: max-content;
+  background-color: #cccccc71;
+  min-width: 300px;
+  width: auto;
+  position: relative;
+}
+
+.data::after{
+  content: '';
+  border: 0;
+  width: 1px;
+  position: absolute;
+  background-color: #0000008f;
+  height: 90%;
+  top: 10px;
+  left: -15px;
+}
+
+.data2{
+  margin-right: 30px;
+}
+
+.data2::after{
+  left: auto;
+  right: -15px;
+}
+
+.demo1 img, .demo2 img, .demo3 img{
+  width: 300px;
+  height: 250px;
+}
+
+.data p{
+  font-size: 15px;
+  padding: 10px 15px;
+}
+
+.data p:nth-child(1){
+  font-weight: 700;
+  font-size: 30px;
+}
+
+
+.demo2{
+  margin-right: 7%;
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+.demo11{
+  margin: 15px;
+  /* 30px 0 0; */
+  opacity: 0;
+  display: flex;
+}
+
+/*Review css*/
+.review{
+  display: flex;
+  padding: 15px  0 30px 20px;
+  background-color: #292b2c;
+  align-items: center;
+}
+
+.miraReviews{
+  margin: auto;
+  width: max-content;
+  color: #fff;
+  text-shadow: 0px 0px 3px #fff;
+  font-size: 38px;
+  margin: auto;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+.miraReviews a{
+  color: #232121;
+  text-decoration: none;
+  font-size: 15px;
+  text-shadow: none;
+  background-color: #e7e7e7;
+  padding: 1.5vh 2vh;
+  border-radius: 3vh;
+}
+
+.miraReviews a:hover{
+  color: #535151;
+}
+
+.ejemplosIMG{
+  font-size: 40px;
+  font-weight: 700;
+  height: 100px;
+  text-decoration: underline;
+  padding: 40px 0 0 15px;
+  margin-bottom: 0px;
+  margin-top: 80px;
+  transition: all 1s;
+}
+
+
+
+@media only screen and (max-width: 780px) {
+  .imagenDemo img{
+    margin: auto;
+    width: 300px;
+    height: 230px;
+  }
+
+  .data::after{
+    left: 0;
+    width: 100%;
+    height: 1px;
+    top: 10px;
+    margin: auto;
+  }
+  .data2, .data{
+    /* background-color: red; */
+    padding-top: 10px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 300px;
+  }
+  .demo1, .demo2{
+    flex-direction: column;
+  }
+
+  .review{
+    flex-direction: column;
+    padding: 3vh 0;
+  }
+  .review .miraReviews{
+    width: 100%;
+  }
+  .review .miraReviews .mira{
+    padding: 30px 0;
+    width: 100%;
+    font-size: 30px;
+  }
+}

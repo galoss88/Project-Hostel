@@ -1,0 +1,38 @@
+.backRoutesAdmin::before{
+  position: relative;
+}
+
+.backRoutesAdmin::after{
+  content: 'Validando credenciales';
+  color: #fff;
+  text-align: center;
+  padding-top: 30vh;
+  font-size: 4vh;
+  font-weight: 600;
+  position: absolute;
+  width: 100%;
+  background: #000;
+  height: 100%;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  animation-name: xd;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes xd {
+  0%{
+    content: "Validando credenciales";
+  }
+  30%{
+    content: 'Validando credenciales.';
+  }
+  60%{
+    content: "Validando credenciales..";
+  }
+  90%{
+    content: "Validando credenciales...";
+  }
+  
+}

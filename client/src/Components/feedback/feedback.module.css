@@ -1,0 +1,22 @@
+.bgWhites{
+    /* background-color: rgba(228, 235, 245, 0.4); */
+    opacity: 0.85;
+    border-radius: 10px;
+}
+
+.error{
+    color: red;
+}
+.paerror{
+    margin: 2%;
+    color: red;
+    font-size: xx-large;
+}
+.success{
+    color: green;
+}
+.pasuccess{
+    margin: 2%;
+    color: green;
+    font-size: xx-large;
+}

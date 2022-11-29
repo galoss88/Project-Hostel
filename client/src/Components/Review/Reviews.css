@@ -1,0 +1,91 @@
+
+.container1{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    max-height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px 20px 10px 10px;
+    border: 1px solid #393939;
+    background-color: #242424;
+}
+.container1::-webkit-scrollbar{
+    -webkit-appearance: none;
+}
+.container1::-webkit-scrollbar{
+    background-color: #2b2b2b;
+}
+.container1::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.container1::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 0;
+}
+
+.container1::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+
+
+.reviews{
+    background-color: #ffffff;
+    color: #000;
+    width: max-content;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #0000005e;
+    border-radius: 0px 15px 15px 15px;
+    margin: 20px 0 8px 10px;
+    padding: 1px 8px;
+    position: relative;
+}
+
+.date{
+    width: 100%;
+    display: flex;
+}
+
+.date p{
+    margin-left: 15px;
+    margin-bottom: 0;
+}
+
+.fechaReview{
+    font-size: 13px;
+    width: max-content;
+}
+.fechaReview label:nth-child(2){
+    color: #868686;
+    margin-left: 15px;
+}
+
+.reviews h3{ 
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    width: max-content;
+}
+
+.reviews .description{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 15px;
+}
+
+.sinComentarios{
+    font-weight: 600;
+    font-size: 30px;
+    color: #868686;
+}
+
+@media only screen and (max-width: 780px){
+    .container1{
+        width: 100%;
+    }
+}

@@ -1,0 +1,128 @@
+.table-container {
+  display: flex;
+  width: 100%;
+  margin: 10px auto;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.rooms-tbl {
+  width: 80%;
+  align-items: flex-end;
+  margin: 3px solid black;
+}
+
+tr:nth-child(2n) {
+  background-color: gainsboro;
+}
+
+tr:nth-child(2n + 1) {
+  background-color: rgb(165, 165, 165);
+}
+
+.rooms-tbl td{
+  padding-left: 10px;
+}
+
+th {
+  border-bottom: 1px solid black;
+}
+
+.rooms-tbl button {
+  border: none;
+  border-radius: 5px;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+}
+
+.rooms-tbl button:hover {
+  background-color: red;
+  color: white;
+}
+
+.botoncito {
+  position: relative;
+
+  display: inline-block;
+
+  width: 3.6rem;
+
+  height: 2rem;
+}
+
+.botoncito input {
+  opacity: 0;
+
+  width: 0;
+
+  height: 0;
+
+  background-color: red;
+}
+
+.deslizadora {
+  position: absolute;
+
+  cursor: pointer;
+
+  top: 0;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  background-color: #34a853;
+
+  transition: 0.4s;
+
+  color: grey;
+}
+
+.deslizadora:before {
+  position: absolute;
+
+  content: "";
+
+  height: 1.6rem;
+
+  width: 1.6rem;
+
+  left: 0.2rem;
+
+  bottom: 0.2rem;
+
+  transition: 0.4s;
+}
+
+input:checked + .deslizadora {
+  background-color: red;
+}
+
+input:checked + .deslizadora:before {
+  transform: translateX(1.6rem);
+}
+input:checked + .deslizadora:before {
+  transform: translateX(1.6rem) rotate(90deg);
+}
+
+.borrar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 56px;
+}
+
+.borrar button{
+  border-radius: 3px;
+  width: 36px;
+  height: 27px;
+}
+
+.borrar button:hover{
+  background-color: red;
+  color: black;
+}

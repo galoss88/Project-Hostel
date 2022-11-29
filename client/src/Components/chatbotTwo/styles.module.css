@@ -1,0 +1,12 @@
+.navLink{
+    font-size: 20px;
+    color:beige;
+}
+.navLink:hover{
+    color:cadetblue;
+}
+
+.divReviews{
+    height: 200px;
+    width: 200px;
+}

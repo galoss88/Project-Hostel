@@ -1,0 +1,24 @@
+.bgWhites{
+    background-color: rgba(228, 235, 245, 0.4);
+    border-radius: 10px;
+}
+body {
+    background: #7F7FD5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.question{
+    font-weight: bolder;
+    font-size: 22px;
+    margin-bottom: 0px;
+}
+.response{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 18px;
+    margin-left: 20px;
+    color: rgba(11, 94, 215);
+}
+h2{
+    text-align: center;
+}
