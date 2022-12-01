@@ -10,6 +10,9 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true
     },
+    dateReserva: {
+      type: DataTypes.STRING,
+    },
     dateIn: {
         type: DataTypes.STRING,
     },

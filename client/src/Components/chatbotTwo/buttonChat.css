@@ -8,5 +8,17 @@
    
   }
   .popover{
-    max-width:400px;
+    max-width: 75%;
+
   }
+
+  @media (min-width:766px){
+    .popover {
+      
+      max-width: none;
+  }
+    body{
+      
+      min-width: 350px;
+    }
+} 

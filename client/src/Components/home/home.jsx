@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <div className='home-container'>      
-    <div className="home-container row ">
+    <div className="home-container row home">
       <Carousel className="carousel w-100 m-auto ">
         <Carousel.Item>
           <div className="xd">
@@ -72,7 +72,7 @@ const Home = () => {
                     src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn-icons-png.flaticon.com%2F128%2F281%2F281769.png&f=1&nofb=1&ipt=ec0a92aa547629d49b3e6694c5503cdc80d9375a816b1831e08b774ed24df9e2&ipo=images" 
                     alt="logoGmail" 
                   />
-                  <a href="#" target="_blank">Correo</a></li>
+                  <a href="/contact" target="_blank">Correo</a></li>
                 <li>
                   <img 
                     src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogovector.net%2Fwp-content%2Fuploads%2F2011%2F11%2Ffacebook-f-logo-195x195.png&f=1&nofb=1&ipt=28f161af0961a8646ffa8fed1ec3f3f5ed73a8e77d17060e17876dc360db8976&ipo=images" 
@@ -80,12 +80,12 @@ const Home = () => {
                     />
                   <a href={info.facebook} target="_blank">Facebook</a>
                 </li>
-                <li>
+                {/* <li>
                   <img 
                     src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstore-images.s-microsoft.com%2Fimage%2Fapps.31617.13655054093851568.f2bf9430-60d7-4569-a50d-0f21c9ade6b3.c563d383-997d-4da1-9def-d7200e3547f8%3Fw%3D180%26h%3D180%26q%3D60&f=1&nofb=1&ipt=b660687cd18505323f7a681a174c54032a42fd21e34a5acade050c113f9244f7&ipo=images" 
                     alt="LogoWhatsapp" 
                   /><a href="#" target="_blank">WhatsApp</a></li>
-                <li><Link to='contact'>Preguntas Frecuentes</Link></li>
+                <li><Link to='contact'>Preguntas Frecuentes</Link></li> */}
               </ul>
             </div>
           </div>
@@ -113,7 +113,6 @@ const Home = () => {
               <div className="data data2">
                 <p>POR QUE ELEGIRNOS</p>
                 <p>{info.chooseUs}</p>
-                {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptate commodi eos excepturi! Odio, facilis quae consequuntur, inventore quos perspiciatis quia eius ea sequi veritatis, nemo quibusdam quam? Omnis maxime hic fugit, dolore ab quisquam ipsam saepe voluptate? Tempora, aut!</p> */}
               </div>
             </div>
             <div className="demo1 demo11" ref={ref3}>

@@ -17,8 +17,8 @@ export default function PaginationPayments({ paymentsPerPage, allRents, paginado
     }
     
     return (
-        <div className="container px-0 bg-black mt-2">
-        <nav className="nav nav-pills d-flex justify-content-center mt-3">
+        <div className="container px-0 bg-black mt-2 ">
+        <nav className="nav nav-pills d-flex justify-content-center mt-3 d-md-flex d-sm-table-cell">
             <li className="nav-item mx-1">
             <button className="nav-item btn btn-dark ">
                 <a onClick={() => prevHandler()}>Prev</a>

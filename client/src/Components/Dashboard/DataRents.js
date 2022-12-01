@@ -1,18 +1,18 @@
 export const rentsData = [
 {
-    date: "Enero",
-    price: 35661
+    date: "Agosto",
+    price: 28161
 },
 {
-    date: "Marzo",
-    price: 6580
+    date: "Septiembre",
+    price: 18080
 },
 {
     date: "Octubre",
-    price: 4000
+    price: 6580
 },
 {
-    date: "Noviemrbe",
+    date: "Noviembre",
     price: 3500
 },
 ] 

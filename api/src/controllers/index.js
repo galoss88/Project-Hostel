@@ -26,7 +26,7 @@ module.exports = {
         return countries
     },
     postOwner: async function(data){
-        const {name, lastName, user, hostelName, city ,
+        const {name, lastName, user, hostelName, address,city ,
                country, zip, instagram, facebook, twitter, 
                mail, aboutUs, chooseUs, extra} = data
         let owner = await Owner.findAll()
@@ -36,6 +36,7 @@ module.exports = {
                 lastName, 
                 user, 
                 hostelName, 
+                address,
                 city,
                 country, 
                 zip, 
@@ -55,6 +56,7 @@ module.exports = {
                lastName:lastName, 
                user:user, 
                hostelName:hostelName, 
+               address:address,
                city:city,
                country:country, 
                zip:zip, 

@@ -3,14 +3,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { getAllCountries, getCLient, postClient } from "../../Redux/actions";
+import { getAllCountries, getCLient, postClient, forgetstate } from "../../Redux/actions";
 import { getRent } from '../../Redux/actions';
 
 import { BsFillPencilFill } from "react-icons/bs";
 /////////////////
 import "./RoomDetail.css";
 import axios from "axios";
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getRoomDetail } from "../../Redux/actions";
@@ -74,6 +74,9 @@ export default function RoomDetail() {
       if(data.user != userLogin.user.email) setPayAvalible(data.status)
     })
     socket.on('userPayC',(data)=> setPayAvalible(data.status));
+    return () =>{
+      dispatch(forgetstate());
+    }
   },[dispatch]);
 
   
@@ -144,9 +147,6 @@ export default function RoomDetail() {
         
     const pay = async ()=>{
         // VERIFICACION DE DATOS DE LA RESERVA
-        console.log("cama", camas)
-        console.log("entrada", checkIn)
-        console.log("salida",checkOut)
         if(!userLogin.isAuthenticated) return setVerLogin(true);
         if(!camas && !checkIn && !checkOut && !pagar) return setAll(true);
         if(!camas) return setVerRoom(true);
@@ -158,9 +158,10 @@ export default function RoomDetail() {
     if (
       !client.name ||
       !client.lastname ||
-      !client.nationality ||
+      !client.country ||
       !client.phoneNumber ||
-      !client.email
+      !client.email ||
+      !client.personalID 
     )
       return setShow(true);
 
@@ -208,7 +209,6 @@ export default function RoomDetail() {
       ...clientInf,
       [e.target.name]: e.target.value,
     });
-    console.log(clientInf);
   }
   function handleName(e) {
     e.preventDefault();
@@ -280,7 +280,7 @@ export default function RoomDetail() {
                         id="validationCustom02"
                         name="lastname"
                         disabled={lastname}
-                        value={lastname ? client.lastname : clientInf.lastname}
+                        defaultValue={client?.lastname}
                         onChange={(e) => handleChange(e)}
                         required
                       />
@@ -309,14 +309,16 @@ export default function RoomDetail() {
                   name="nationality"
                   onChange={(e) => handleChange(e)}
                 >
-                  <option selected >Selecciona tu Pais</option>
-                  {
-                    countries.map((c, index) =>{
-                      return(
-                        <option key={index} value={c.country}>{c.country}</option>
-                      )
-                    })
-                  }
+                  <option  >Selecciona tu Pais</option>
+                  
+                  {                                                     
+                        countries?.map(coun => (
+                            coun.country === client.country ?
+                            <option key ={coun.id} value = {coun.id} selected> {coun.country} </option>
+                            :
+                            <option key ={coun.id} value = {coun.id}> {coun.country} </option>)
+                        )
+                    }
                 </Form.Select>
                 <Form.Label>DNI o Pasaporte</Form.Label>
                 <Form.Control
@@ -326,6 +328,7 @@ export default function RoomDetail() {
                   placeholder="DNI o Passport"
                   autoFocus
                   name="personalID"
+                  defaultValue={client?.personalID}
                 />
                 <Form.Label>Telefono</Form.Label>
                 <Form.Control
@@ -335,6 +338,7 @@ export default function RoomDetail() {
                   placeholder="Telefono"
                   autoFocus
                   name="phoneNumber"
+                  defaultValue={client?.phoneNumber}
                 />
               </Form.Group>
             </Form>
@@ -421,6 +425,7 @@ export default function RoomDetail() {
         <SweetAlert
           warning
           onConfirm={() => {setLogin(true)}}
+          title="Oops...!"
         >
         <span>Para poder hacer reservas debes registrarte primero</span>
         </SweetAlert>
@@ -458,9 +463,9 @@ export default function RoomDetail() {
           imagenes &&
           <Carousel >
             {
-              imagenes.map((img) =>{
+              imagenes.map((img, index) =>{
                 return(
-                  <Carousel.Item>
+                  <Carousel.Item key={index} >
                     <img
                     
                     src={img}
@@ -478,10 +483,10 @@ export default function RoomDetail() {
         <div className='container d-grid gap-2 col-6 mx-auto'>
               <button disabled={room.status} className="btn btn-secondary" onClick={() => {setCalendar(true)}} >Seleccione una fecha</button>
           </div>
-        <p className="Ac">
+        <div className="Ac">
         <h2 style={{marginTop: "2vh"}}>${room.price} por cama</h2>
           <b>Camas a reservar: {camas}</b>
-        </p>
+        </div>
       </div>
       <div className="rangebeds">
         <input

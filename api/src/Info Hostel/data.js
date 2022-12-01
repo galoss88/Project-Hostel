@@ -30,6 +30,7 @@ module.exports = [
     ],
     rent: [
       {
+        dateReserva: new Date(2022, 08, 01),
         dateIn: new Date(2023, 00, 01),
         dateOut: new Date(2023, 00, 05),
         price: 6580.2,
@@ -37,6 +38,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 08, 01),
         dateIn: new Date(2023, 00, 05),
         dateOut: new Date(2023, 00, 10),
         price: 3500.5,
@@ -44,6 +46,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 08, 01),
         dateIn: new Date(2023, 00, 01),
         dateOut: new Date(2023, 00, 20),
         price: 4000,
@@ -51,6 +54,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 08, 05),
         dateIn: new Date(2023, 00, 01),
         dateOut: new Date(2023, 00, 05),
         price: 6580.2,
@@ -58,6 +62,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 08, 01),
         dateIn: new Date(2023, 00, 05),
         dateOut: new Date(2023, 00, 10),
         price: 3500.5,
@@ -65,6 +70,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 09, 10),
         dateIn: new Date(2023, 00, 01),
         dateOut: new Date(2023, 00, 20),
         price: 4000,
@@ -72,6 +78,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 09, 10),
         dateIn: new Date(2023, 00, 01),
         dateOut: new Date(2023, 00, 05),
         price: 6580.2,
@@ -79,6 +86,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 09, 04),
         dateIn: new Date(2023, 10, 05),
         dateOut: new Date(2023, 10, 10),
         price: 3500.5,
@@ -86,6 +94,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 09, 04),
         dateIn: new Date(2023, 09, 01),
         dateOut: new Date(2023, 09, 20),
         price: 4000,
@@ -93,6 +102,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 10, 14),
         dateIn: new Date(2023, 02, 01),
         dateOut: new Date(2023, 02, 05),
         price: 6580.2,
@@ -100,6 +110,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 11, 17),
         dateIn: new Date(2023, 00, 07),
         dateOut: new Date(2023, 00, 10),
         price: 3500.5,
@@ -107,6 +118,7 @@ module.exports = [
         status: false,
       },
       {
+        dateReserva: new Date(2022, 08, 01),
         dateIn: new Date(2023, 00, 01),
         dateOut: new Date(2023, 00, 20),
         price: 4000,

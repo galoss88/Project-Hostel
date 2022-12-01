@@ -32,7 +32,7 @@ export default function PanelAdmin() {
     if(!isAuthenticated) return navigate('/');
     else if (localStorage.getItem('Rol') !== "menu-admin") return navigate('/');
     (async () => {
-      console.log("Validando permiso")
+      //console.log("Validando permiso")
       try {
         const token = await getAccessTokenSilently();
         const response = await dispatch(getRolUser(token))

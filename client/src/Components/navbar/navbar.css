@@ -17,8 +17,7 @@
 }
 
 .profileIMG{
-    width: 30px;
-    height: 30px;
+    width:25%;
 }
 
 .Login{
@@ -61,6 +60,12 @@
     overflow: hidden;
 }
 
+.nav{
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+}
+
 .miCuentaOp:focus ~ .LoginOp, .LoginOp:hover{
     height: max-content;
     visibility: visible;
@@ -68,8 +73,11 @@
 
 
 
-
 @media only screen and (max-width: 770px) {
+    nav{
+        height: max-content;
+    }
+    
     .cont{
         display: flex;
         flex-direction: column;
@@ -81,10 +89,20 @@
         height: max-content;
     }
 
-    .nav{
+    .no{
         height: 0;
         overflow: hidden;
+        margin-top: 40px;
+        text-align: left;
+        padding-left: 0;
     }
+    .yes{
+        height: max-content;
+        overflow: hidden;
+        margin-top: 50px;
+        padding-left: 0;
+    }
+
     .act{
         width: 25px;
         height: 30px;
@@ -121,7 +139,21 @@
         top: 25px;
         right: 10px;
     }
-    .d-block{
-        margin: auto;
+    
+    .icon-hostel{
+        transform: scale(0.9);
+        top: 0;
+        position: absolute;
+        margin-left: 40%;
+    }
+
+    .opt{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .nav a{
+        margin: 5px 0;
     }
 }

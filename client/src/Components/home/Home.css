@@ -11,10 +11,10 @@
  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.row{
+.home{
   width: 100%;
   --bs-gutter-x: 0 !important; 
-}
+} 
 
 
 .carousel img {
@@ -300,6 +300,9 @@
     width: 300px;
     height: 230px;
   }
+  .xd h1{
+    width: 80%;
+  }
 
   .data::after{
     left: 0;
@@ -333,5 +336,19 @@
     padding: 30px 0;
     width: 100%;
     font-size: 30px;
+  }
+  
+  .collage {
+    padding-top: 30px;
+    margin: 0;
+  }
+  
+  .collage .img{
+    width: 48%;
+    height: auto;
+    margin: 3px;
+    z-index: 200;
+    position: relative;
+    overflow: hidden;
   }
 }

@@ -98,7 +98,7 @@ async function handleDelete(e){
 <div className={`accordion ${style.bgWhites} col-12 mt-3 row m-auto`} id="accordionPanelsStayOpenExample">
   <h2 className="text-dark">Lista de Preguntas frecuentes</h2>
 {
-     faqsList?.map(info=>{
+    faqsList.length ? faqsList?.map(info=>{
       return(
     <div className={`accordion-item ${style.bgWhites} col-lg-4 mt-3`} key={info.id}>
     <h2 className={`accordion-header d-flex flex-nowrap`} id="panelsStayOpen-headingOne">
@@ -117,6 +117,10 @@ async function handleDelete(e){
     </div>
   </div>)
     })
+    :
+    <div className="container">
+      <h2 className="text-muted p-5">No hay Preguntas frecuentes</h2>
+    </div>
   }
   </div>
    </div>

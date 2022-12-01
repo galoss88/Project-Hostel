@@ -4,8 +4,7 @@ import { useState } from "react";
 import style from "./Filters.module.css";
 import Swal from 'sweetalert2'
 
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+
 
 export default function Filters({ getRooms, setData }) {
   //Estados -------------------------------------------------->>
@@ -111,7 +110,6 @@ export default function Filters({ getRooms, setData }) {
       
       <nav className="nav nav-pills d-flex justify-content-center">
     {/* SELECT TIPO DE HABITACION----------------------------------------------->> */}
-    
         <li className="nav-item mx-1">
           <select
             id="type"

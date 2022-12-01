@@ -25,7 +25,7 @@ export default function Reviews() {
 
     return <span>{fecha}</span>;
   }
-  //console.log(reviews)
+  
   //RENDER------------------------------------------------------------------->>
   return reviews.length ? (
     <div className='container1'>

@@ -18,6 +18,9 @@ module.exports =(sequelize)=>{
         hostelName:{
             type:DataTypes.STRING
         }, 
+        address:{
+            type:DataTypes.STRING
+        }, 
         city:{
             type:DataTypes.STRING
         },

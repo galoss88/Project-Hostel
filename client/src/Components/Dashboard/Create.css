@@ -23,8 +23,9 @@
 .dropzone{
   text-align: center;
   padding: 20px;
-  border: 3px dashed #eeeeee;
+  border: 3px dashed rgb(126, 126, 126);
   background-color: #fafafa;
+  border-radius: 3px;
   color: #bdbdbd;
   margin: 20px;
 }
@@ -32,4 +33,20 @@
 .carroza{
 justify-content: center;
 align-items: center;
+}
+
+.borrarImagen{
+  display: flex;
+  margin: 0 10px;
+  justify-content: center;
+}
+
+.borrarImagen:hover{
+  background-color: red;
+  color: rgb(80, 79, 79);
+}
+
+.totales{
+  border: 3px solid black;
+  border-radius:50%;
 }

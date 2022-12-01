@@ -36,6 +36,8 @@ const aprobado = ({
 };
 
 const rechazado = ({ name, status }) => {
+    let estado = "";
+    if(status !== "approved") estado = "failed"
   return `
     <div style="width:100%;background-color: blanchedalmond;padding-top:10px;margin:auto; font-family: sans-serif;"><div class="adM">
 </div><div style="width:max-content;margin-top:20px;margin:auto;background:#fff"><div class="adM">
@@ -46,7 +48,7 @@ const rechazado = ({ name, status }) => {
         </div>
         <p style="color:#fff;">Hola ¡<b style="color:#fff;">${name}</b>! 👋👋</p>
         <p style="color:#fff;">Tuvimos problemas con el pago :(</p>
-        <label style="color:#fff;">Estado de pago: </label><b style="color:#fff;">${status}</b>
+        <label style="color:#fff;">Estado de pago: </label><b style="color:#fff;">${estado}</b>
         <p style="color:#fff;">- - - - - - - - - - - - - - - - - - - - - - - - -</p>
         <div style="color:#000;background-color: #e3e3e3; padding: 15px; font-size: 13px;">
             <p>No se pudo realizar la compra, pruebe <br> con otro medio de pago o <a href="http://localhost:3000" target="_blank" style="text-decoration: none; color:#000; font-weight: 700;">Contactenos</a></p>

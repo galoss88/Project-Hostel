@@ -24,7 +24,6 @@ const sendEmail = async ({
   check_out,
 }) => {
   let contHTML;
-  console.log(status);
   status == "approved"
     ? (contHTML = aprobado({
       name,
@@ -46,5 +45,4 @@ const sendEmail = async ({
   });
 };
 
-// <label>Estado de pago: </label><b>${status}</b>
 module.exports = { sendEmail };

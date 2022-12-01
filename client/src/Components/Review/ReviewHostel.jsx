@@ -5,15 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
-
 import { IoIosStar } from "react-icons/io";
 import style from "../../Styles/ReviewHostel.module.css";
 import { postReview } from "../../Redux/actions/index.js";
-// const Swal = require("sweetalert2");
 import Swal from "sweetalert2";
 import { withAuthenticationRequired } from "@auth0/auth0-react";
-import {useAuth0} from '@auth0/auth0-react'
-import {useNavigate} from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 
 function RatingBootstrap() {
   const client = useSelector((state) => state.client);
@@ -22,7 +20,6 @@ function RatingBootstrap() {
   const [current, setCurrent] = useState(0);
   const navigate = useNavigate();
   // const [description, setDescription] = useState("");
-  console.log(client)
 
   const [input, setInput] = useState({
     usuario: client.name,
@@ -40,22 +37,24 @@ function RatingBootstrap() {
   }
   function handleSubmit(e) {
     e.preventDefault();
+
     if (input.rating === 0) {
       return input.rating === 0
         ? Swal.fire({
             icon: "warning",
             title: "Oops...",
-            text: "Por favor, seleccione un número de estrellas de acuerdo a su experencia en Project Hostel.",
+            text:
+              "Por favor, seleccione un número de estrellas de acuerdo a su experencia en Project Hostel.",
           })
         : null;
     } else {
-      if(!client.name) {
+      if (!client.name) {
         Swal.fire({
           icon: "warning",
           title: "Oops...",
           text: "Por favor, Complete sus datos antes de dejar una reseña.",
-        })
-        return navigate("/clientEdit")
+        });
+        return navigate("/clientEdit");
       }
       dispatch(postReview(input));
       setInput({ usuario: client.name, rating: 0, description: "" });
@@ -90,7 +89,7 @@ function RatingBootstrap() {
           label="Comments"
           className="mb-3 d-flex mx-auto form-floating gap-2"
           onChange={(e) => handleChange(e)}
-          style={{ height: "100px", width:"600px" }}
+          style={{ height: "100px", width: "600px" }}
         >
           <Form.Control
             as="textarea"

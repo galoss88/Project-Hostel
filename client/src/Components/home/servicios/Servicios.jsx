@@ -1,7 +1,7 @@
 import React from "react";
 import Lavanderia from "./Lavanderia";
 import Recepcion from "./Recepcion";
-import"./servicios.css";
+import "./servicios.css";
 import Wifi from "./Wifi";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";

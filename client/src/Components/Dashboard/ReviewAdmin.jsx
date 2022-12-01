@@ -22,7 +22,7 @@ export default function ReviewAdmin() {
     });
     return reviewsOrdenados;
   }
-  console.log(reviews);
+
   const { getAccessTokenSilently } = useAuth0();
   //Traigo reviews ------------------------------------------------->>
   useEffect(() => {
@@ -76,16 +76,19 @@ export default function ReviewAdmin() {
               </h1>
             </button>
           </li>
-          {paginas.map((e) => (
-            <li className="d-flex align-items-center">
+          {paginas.map((e,index) => (
+            <React.Fragment key={index}>
+            <li key={index} className="d-flex align-items-center">
               <Pagination onClick={() => setCurrentPage(e)}>
                 <Pagination.Item
+                key={index}
                   className={currentPage === e ? "active" : "disabled"}
                 >
                   {e}
                 </Pagination.Item>
               </Pagination>
             </li>
+            </React.Fragment>
           ))}
           <li className="page-item">
             <button
@@ -119,7 +122,7 @@ export default function ReviewAdmin() {
 
   return (
     <div className="container-fluid">
-      <div className="mx-auto m-3 w-25 table-responsive-lg ">
+      <div className="mx-auto m-3 table-responsive-lg ">
         {paginado()}
 
         <table className="table table-dark table-striped table align-middle table table-hover text-center">
@@ -137,69 +140,86 @@ export default function ReviewAdmin() {
           </thead>
           <tbody>
             {/* //LOS DATOS A RENDERIZAR */}
-            {currentReviews.map((r, index) => {
-              return (
-                <>
-                  <tr key={r.id}>
-                    <th scope="row">{r.id}</th>
-                    <td>{getFechaHora(r.createdAt)}</td>
-                    <td>
-                      {r.client !== null && r.client
-                        ? r.client.name
-                        : "Usuario Anonimo"}
-                    </td>
+            {currentReviews.length ? (
+              currentReviews.map((r, index) => {
+                return (
+                  <>
+                    <tr key={r.id}>
+                      <th scope="row">{r.id}</th>
+                      <td>{getFechaHora(r.createdAt)}</td>
+                      <td>
+                        {r.client !== null && r.client
+                          ? r.client.name
+                          : "Usuario Anonimo"}
+                      </td>
 
-                    <td>{r.rating}</td>
-                    <td>{r.description ? r.description : "Sin comentarios"}</td>
-                    <td className="align-middle">
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        onClick={async () => {
-                          await eliminar(r.id, "eliminar");
-                          setEstado(1);
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          className="bi bi-x-circle"
-                          viewBox="0 0 16 16"
+                      <td>{r.rating}</td>
+                      <td>
+                        {r.description ? r.description : "Sin comentarios"}
+                      </td>
+                      <td className="align-middle">
+                        <button
+                          type="button"
+                          className="btn btn-danger"
+                          onClick={async () => {
+                            await eliminar(r.id, "eliminar");
+                            setEstado(1);
+                          }}
                         >
-                          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-                        </svg>
-                      </button>
-                    </td>
-                    <td className="align-middle">
-                      <button
-                        type="button"
-                        className="btn btn-danger"
-                        onClick={async () => {
-                          await eliminar(r.id, "recuperar");
-                          setEstado(0);
-                        }}
-                      >
-                        Recuperar
-                      </button>
-                    </td>
-                    <td className="align-middle">
-                      <h3 className="m-2">
-                        <span
-                          className={
-                            !r?.status ? "badge bg-success" : "badge bg-danger"
-                          }
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            className="bi bi-x-circle"
+                            viewBox="0 0 16 16"
+                          >
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                          </svg>
+                        </button>
+                      </td>
+                      <td className="align-middle">
+                        <button
+                          type="button"
+                          className="btn btn-danger"
+                          onClick={async () => {
+                            await eliminar(r.id, "recuperar");
+                            setEstado(0);
+                          }}
                         >
-                          {!r.status ? "active" : "disabled"}
-                        </span>
-                      </h3>
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
+                          Recuperar
+                        </button>
+                      </td>
+                      <td className="align-middle">
+                        <h3 className="m-2">
+                          <span
+                            className={
+                              !r?.status
+                                ? "badge bg-success"
+                                : "badge bg-danger"
+                            }
+                          >
+                            {!r.status ? "active" : "disabled"}
+                          </span>
+                        </h3>
+                      </td>
+                    </tr>
+                  </>
+                );
+              })
+            ) : (
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td className="text-muted p-4">No hay Review</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

@@ -94,6 +94,12 @@ export default function ClientEdit() {
 
     async function handleSubmit(e) {
         e.preventDefault()
+        if (!client.countrieId && !info.countrieId){
+            setClient({
+                ...client,
+                countrieId: 9
+            })
+        }
         if (!personalId){
             if (!client.personalID) Swal.fire({
                 icon: 'error',
@@ -106,7 +112,6 @@ export default function ClientEdit() {
                 text: 'Está mal cargado el número',
               })
         }        
-        // alert('ok')
 
         const token = await getAccessTokenSilently();
         const authorization = {
@@ -127,7 +132,6 @@ export default function ClientEdit() {
             title: 'Success...',
             text: 'Tus datos han sido modificados',
           })
-        //history.push('/home')
     }
 
     return (

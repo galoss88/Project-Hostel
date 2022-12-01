@@ -5,27 +5,24 @@
     text-decoration: none;
     font-size: 17px;
 }
-.tittle{
-    background-color: #212121;
-    color: white;
-}
+/* .tittle{
+    text-align: center;
+} */
 .offcanvas{
     background-color: #212121;
     border-radius: 5px;
 }
 
 .cerrarSesion{
-    margin: auto;
+    margin:auto;
     width: 50%;
-    display: flex;
-    justify-self: center;
-    align-items: flex-end;
 }
 .botones{
     margin: auto;
     background-color: #212121;
     border: #212121;
     color: white;
+
 }
 /* .botones:hover{
     background-color: white;

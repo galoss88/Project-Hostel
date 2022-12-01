@@ -41,6 +41,7 @@ function Payments() {
     setData(false)
   }, [data]) 
   
+  console.log(rentsCurrent)
 
   // PAGINADO --------------------->>
   const [currentPage, setCurrentPage] = useState(1)
@@ -60,7 +61,7 @@ function Payments() {
   
 
   // Creo un array de meses para el filtro
-  const months = allRents.map(e => e.dateIn.slice(0, 7))
+  const months = allRents.map(e => e.dateReserva.slice(0, 7))
   const months2 = []
   months2.push(months[0])
   for(var i = 0; i < months.length; i++) {
@@ -158,7 +159,10 @@ function Payments() {
     labels: rentsData.map((e) => e.date),
     datasets: [{
       label: "Ganancias mensuales",
-      data: rentsData.map((e) => e.price)
+      data: rentsData.map((e) => e.price),
+      backgroundColor: [
+        "rgba(30, 30, 30)"
+      ]
     }]
   })
   // --------------------------------------->>
@@ -167,14 +171,13 @@ function Payments() {
     <div >
    
       <div className={style.ContainerFilters}>
-        <nav className="nav nav-pills d-flex justify-content-center">
-          <li className="nav-item mx-1">
+        <nav className="nav nav-pills d-flex justify-content-center d-md-flex d-sm-table-cell   " >
+          <li className="nav-item mx-1 sm-wd-100" key="1">
             <select 
               name="filterByMonth" 
-              defaultValue="all"
               value={JSON.parse(localStorage.getItem("selectMonth"))}
               onChange={e => {rentsHandler(e)}}
-              className="form-select"
+              className="form-select text-center"
             >
               <option value="all" hidden>
                 Filtrar por mes
@@ -184,10 +187,9 @@ function Payments() {
               })}
             </select>
           </li>
-          <li className="nav-item mx-1">
+          <li className="nav-item mx-1" key="dateSelect">
             <select 
               name="sortByDate" 
-              defaultValue="all"
               value={JSON.parse(localStorage.getItem("selectDate"))}
               onChange={e => {rentsHandler(e)}}
               className="form-select"
@@ -195,16 +197,16 @@ function Payments() {
               <option value="all" hidden>
                 Ordenar por fecha
               </option>
-              <option value="asc">Menos reciente</option>
-              <option value="desc">Más reciente</option>
+              <option value="asc">Más reciente</option>
+              <option value="desc">Menos reciente</option>
             </select>
           </li>
-          <li className="nav-item mx-1">
+          <li className="nav-item mx-1" key="buttonFilter">
             <button type="button" onClick={e => handleSubmitFilter(e)} className="nav-item  btn btn-primary">
               Filtrar
             </button>
           </li>
-          <li className="nav-item mx-1">
+          <li className="nav-item mx-1" key="buttonDraft">
             <button type="button" onClick={e => handleResetFilters(e)} className="nav-item  btn btn-primary">
               Borrar filtros
             </button>
@@ -220,43 +222,57 @@ function Payments() {
       paginado={paginado}
       currentPage={currentPage}
       totalPages={totalPages}
+      className="d-md-flex d-sm-table-cell"
      />
+
     
     <Table striped bordered hover variant="dark" className="col-md-9 bg-dark">
       <thead>
         <tr className='text-center'>
           <th>id</th>
+          <th>Fecha de pago</th>
           <th>Check-In</th>
           <th>Check-Out</th>
-          <th>Payment</th>
+          <th>Pago</th>
           <th>Borrador</th>
         </tr>
       </thead>
       <tbody>
         {
-          currentPayments && currentPayments.map(e => {
+         currentPayments.length ? currentPayments && currentPayments.map(e => {
             let auxIn = e.dateIn.slice(0, 10)
             let auxOut = e.dateOut.slice(0, 10)
+            let auxPay = e.dateReserva.slice(0, 10)
             let id = e.id
             return (
               <tr className='text-center'>
                 <td>{id}</td>
+                <td>{auxPay}</td>
                 <td>{auxIn}</td>
                 <td>{auxOut}</td>
-                <td><b>${e.price}</b></td>
+                <td>${e.price}</td>
                 <td><button onClick={(e) => handleLogicalDraft(e, id)} className="btn btn-light">Borrar</button></td>
               </tr>
             )  
-          })
+          }):
+          <tr>
+               <td></td>
+               <td></td>
+               <td></td>
+              <td className="text-muted p-4">No hay pagos registrados</td>
+              <td></td>
+              <td></td>
+
+          </tr>
         }
         <tr>
           <td></td>
           <td colSpan={2}><b>Total:</b></td>
-          <td>${Math.floor(sum)}</td>
+          <td  className='text-center'><b>${Math.floor(sum)}</b></td>
         </tr>
       </tbody>
     </Table>
-      <div style={{width: 700}}>
+      <div style={{width: 700}} className="bg-light " >
         <Bar data={rentData}/>
       </div>
     </div>

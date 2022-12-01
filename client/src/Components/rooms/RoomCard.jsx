@@ -27,7 +27,7 @@ export default function RoomCard({
           alt="bedroom"
           className="col-md-3 ml-3 rounded"
           width="200px" /* height="180px" */
-          // style={{marginRight: "1vw" }}
+          style={{objectFit: "cover"}}
          
         ></img>
         <div className="col-md-9 " style={{paddingLeft: "2vw"}} >

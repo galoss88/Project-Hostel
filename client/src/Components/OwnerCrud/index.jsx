@@ -53,6 +53,7 @@ export default function OwnerCrud() {
 
   return (
     <div className={`${style.bgWhites} container my-4`} >
+      
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Row className="mb-3">
           <h2>Datos del dueño</h2>
@@ -101,9 +102,11 @@ export default function OwnerCrud() {
             </InputGroup>
           </Form.Group>
         </Row>
-        <Row className="mb-3">
-          <h2>Datos del hotel</h2>
-          <Form.Group as={Col} md="8" controlId="validationCustom01">
+
+        <br/>
+        <Row className="mb-3">    
+        <h2>Datos del hotel</h2>      
+          <Form.Group as={Col} md="4" controlId="validationCustom01">
               <Form.Label>Nombre del hotel (obligatorio)</Form.Label>
               <Form.Control
                 required
@@ -127,21 +130,21 @@ export default function OwnerCrud() {
               />
               <Form.Control.Feedback>Genial!</Form.Control.Feedback>
             </Form.Group>
-        </Row>
-        <Row className="mb-3">
-          <Form.Group as={Col} md="6" controlId="validationCustom03">
-            <Form.Label>Provincia (obligatorio)</Form.Label>
-            <Form.Control 
-              required 
-              name="city"
-              type="text" 
-              placeholder="Provincia"
-              onChange={e=> handleChange(e)}
-              defaultValue = {info.city}
+            <Form.Group as={Col} md="4" controlId="validationCustom01">
+              <Form.Label>Direccion</Form.Label>
+              <Form.Control
+                required
+                name="address"
+                type="text"
+                placeholder="Direccion"
+                onChange={e=> handleChange(e)}
+                defaultValue = {info.address}
               />
-            <Form.Control.Feedback type="invalid">Por favor, coloque una provincia válida.</Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom04">
+              <Form.Control.Feedback>Genial!</Form.Control.Feedback>
+            </Form.Group>
+        </Row>
+        <Row className="mb-3">          
+          <Form.Group as={Col} md="4" controlId="validationCustom04">
             <Form.Label>Pais (obligatorio)</Form.Label>
             <Form.Control 
               required 
@@ -153,7 +156,19 @@ export default function OwnerCrud() {
               />
             <Form.Control.Feedback type="invalid">Por favor, coloque un país válido.</Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
+          <Form.Group as={Col} md="4" controlId="validationCustom03">
+            <Form.Label>Provincia (obligatorio)</Form.Label>
+            <Form.Control 
+              required 
+              name="city"
+              type="text" 
+              placeholder="Provincia"
+              onChange={e=> handleChange(e)}
+              defaultValue = {info.city}
+              />
+            <Form.Control.Feedback type="invalid">Por favor, coloque una provincia válida.</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col} md="4" controlId="validationCustom05">
             <Form.Label>Codigo postal (obligatorio)</Form.Label>
             <Form.Control 
               required
@@ -167,15 +182,7 @@ export default function OwnerCrud() {
           </Form.Group>
         </Row>
 
-        {/* <Form.Group className="mb-3">
-          <Form.Check
-            required
-            label="Agree to terms and conditions"
-            feedback="You must agree before submitting."
-            feedbackType="invalid"
-          />
-        </Form.Group> */}          
-
+        <br/>
         <Row className="mb-3">
           <h2>Redes sociales</h2>
           <Form.Group as={Col} md="4" controlId="validationCustom01">
@@ -215,6 +222,7 @@ export default function OwnerCrud() {
             </InputGroup>
           </Form.Group>
         </Row>
+        <br/>
         <Row className="mb-3">
           <h2>Informacion para el cliente</h2>
           <Form.Group as={Col} md="12" controlId="validationCustomUsername">
@@ -222,7 +230,7 @@ export default function OwnerCrud() {
             <InputGroup hasValidation>
               <Form.Control
                 name="aboutUs"
-                type="textarea"
+                as ="textarea"
                 placeholder="Acerca de..."
                 aria-describedby="inputGroupPrepend"
                 onChange={e=> handleChange(e)}
@@ -236,7 +244,7 @@ export default function OwnerCrud() {
             <InputGroup hasValidation>
               <Form.Control
                 name="chooseUs"
-                type="textarea"
+                as ="textarea"
                 placeholder="Porque elegirnos?"
                 aria-describedby="inputGroupPrepend"
                 onChange={e=> handleChange(e)}
@@ -250,7 +258,7 @@ export default function OwnerCrud() {
             <InputGroup hasValidation>
               <Form.Control
                 name="extra"
-                type="textarea"
+                as ="textarea"
                 placeholder="Extras..."
                 aria-describedby="inputGroupPrepend"
                 onChange={e=> handleChange(e)}

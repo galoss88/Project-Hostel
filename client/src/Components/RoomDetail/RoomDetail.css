@@ -110,51 +110,6 @@ body::before{
     color: #727272;
     cursor: no-drop;
 }
-@media only screen and (max-width: 837px){
-    .listBeds{
-        width: 300px;
-        margin: auto;
-    }
-    .listBeds label{
-        text-align: left;
-        width: 200px;
-        margin: 10px 30px;
-    }
-    
-    .listBeds input[type='checkbox']{
-        width: 20px;
-        height: 20px;
-    }
-}
-
-@media only screen and (max-width: 600px){
-    .datas{
-        display: flex;
-        flex-direction: column;
-    }
-    .infoRoom{
-        display: flex;
-        flex-direction: column-reverse;
-    }
-    .infoRoom img{
-        width: 90%;
-        height: auto;
-        margin: auto;
-    }
-
-
-    
-    .listBeds label{
-        text-align: left;
-        width: 200px;
-        margin: 10px 30px;
-    }
-    
-    .listBeds input[type='checkbox']{
-        width: 20px;
-        height: 20px;
-    }
-}
 
 .IframeDiv{
     position: fixed;
@@ -165,6 +120,7 @@ body::before{
     background-color: #00000093;
     display: flex;
     justify-content: center;
+    z-index: 400;
 }
 
 .IframeDiv .PagarIframe{
@@ -258,4 +214,51 @@ body::before{
 button{
     display: flex;
     justify-content: center;
+}
+
+
+@media only screen and (max-width: 837px){
+    .listBeds{
+        width: 300px;
+        margin: auto;
+    }
+    .listBeds label{
+        text-align: left;
+        width: 200px;
+        margin: 10px 30px;
+    }
+    
+    .listBeds input[type='checkbox']{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    .datas{
+        display: flex;
+        flex-direction: column;
+    }
+    .infoRoom{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .infoRoom img{
+        width: 90%;
+        height: auto;
+        margin: auto;
+    }
+
+
+    
+    .listBeds label{
+        text-align: left;
+        width: 200px;
+        margin: 10px 30px;
+    }
+    
+    .listBeds input[type='checkbox']{
+        width: 20px;
+        height: 20px;
+    }
 }

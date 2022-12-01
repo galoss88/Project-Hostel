@@ -1,14 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import style from "./style.module.css";
 import emailjs from "emailjs-com";
 import { useDispatch, useSelector } from "react-redux";
 import { getFaq } from "../../Redux/actions";
+import Swal from 'sweetalert2'
 
 export default function Contact() {
   const faqs = useSelector((state) => state.faq);
   const dispatch = useDispatch();
+  const [msj,setMsj ]= useState({})
 
+  function handleChange(e) {
+    setMsj({...msj,
+        [e.target.name]: e.target.value
+    })
+  }
   function enviarMail(e) {
     e.preventDefault();
     emailjs
@@ -24,8 +31,12 @@ export default function Contact() {
           title: "Success...",
           text: "Se ha enviado correctamente",
         });
-        console.log(res);
+        
+
       }); //serviceId,TemplateId,objeto,key
+    setMsj({name:'',
+            email:'',
+            message:''})
   }
 
   useEffect(() => {
@@ -52,6 +63,8 @@ export default function Contact() {
               className="form-control"
               id="validationCustom01"
               name="name"
+              value={msj.name}
+              onChange={e=> handleChange(e)}
               required
             />
             <div className="valid-feedback">¡Se ve bien!</div>
@@ -70,6 +83,8 @@ export default function Contact() {
                 id="validationCustomUsername"
                 aria-describedby="inputGroupPrepend"
                 name="email"
+                value={msj.email}
+                onChange={e=> handleChange(e)}
                 required
               />
               <div className="invalid-feedback">
@@ -85,6 +100,8 @@ export default function Contact() {
               className="form-control"
               id="validationTextarea"
               name="message"
+              value={msj.message}
+              onChange={e=> handleChange(e)}
               required
             ></textarea>
             <div className="invalid-feedback">
@@ -92,6 +109,7 @@ export default function Contact() {
             </div>
           </div>
           <div className="d-grid gap-2 my-4">
+            {/* BOTON ENVIAR */}
             <button className="btn btn-primary" type="submit">
               Enviar
             </button>
@@ -104,7 +122,7 @@ export default function Contact() {
         id="accordionPanelsStayOpenExample"
       >
         <h2 className="text-dark">Preguntas frecuentes</h2>
-        {faqs?.map((info) => {
+        {faqs.length ? faqs?.map((info) => {
           return (
             <div className={`accordion-item ${style.bgWhites}`} key={info.id}>
               <h2 className={`accordion-header`} id="panelsStayOpen-headingOne">
@@ -130,7 +148,11 @@ export default function Contact() {
               </div>
             </div>
           );
-        })}
+        }):
+        <div className="container">
+        <h2 className="text-muted p-5">No hay Preguntas frecuentes para Mostrar</h2>
+      </div>
+      }
       </div>
     </div>
   );

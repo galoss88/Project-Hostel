@@ -7,6 +7,7 @@ import "./buttonChat.css";
 function PopoverPositionedExample() {
   return (
     <>
+    
       <OverlayTrigger
         trigger="click"
         className="button-chatbot"
@@ -22,6 +23,7 @@ function PopoverPositionedExample() {
           <MdChat color="white" size={30} />
         </Button>
       </OverlayTrigger>
+      
     </>
   );
 }

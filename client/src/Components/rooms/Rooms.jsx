@@ -62,10 +62,12 @@ export default function Rooms() {
                     beds_avalaibles={e.beds_avalaibles}
                     status={e.status}
                   />
+                  {console.log}
                 </div>
               );
             })}
-          <div className="row mx-auto" >
+
+          <div className="row mx-auto">
             <Paginate
               roomsPerPage={roomsPerPage}
               allRooms={allRooms?.length}

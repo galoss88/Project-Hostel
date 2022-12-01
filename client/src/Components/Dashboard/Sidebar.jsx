@@ -12,20 +12,24 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Sidebar() {
   const [currentLink, setCurrentLink] = useState(1);
-  const {logout} = useAuth0();
+  const { logout } = useAuth0();
   return (
     <div>
       <div className="container">
         <Section>
           {/* //TOP-------------------------------------------->> */}
           <div className="top">
-            <div className="brand">
+            <div className="d-flex  justify-content-center">
               <img
                 className="logo"
                 src={logo}
                 style={{ backgroundColor: "white", borderRadius: "10px" }}
               />
-              <span>Project Hostel</span>
+            </div>
+            <div className="brand">
+              <span className="text-info">
+                <b>Project Hostel</b>
+              </span>
             </div>
 
             <div className="links">
@@ -89,14 +93,15 @@ export default function Sidebar() {
               </ul>
             </div>
           </div>
-          <div style={{display: "flex", justifyContent: "center" }} >
-            <button className="btn btn-outline-danger"
-            onClick={() =>{
-              localStorage.clear();
-              logout()
-            }}
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button
+              className="btn btn-outline-danger"
+              onClick={() => {
+                localStorage.clear();
+                logout();
+              }}
             >
-              <FiLogOut/> Logout
+              <FiLogOut /> Cerrar Sesion
             </button>
           </div>
         </Section>
@@ -105,35 +110,27 @@ export default function Sidebar() {
   );
 }
 const Section = styled.section`
-  position: fixed;
-  width: 100%;
-  left: 0.5%;
   background-color: dark;
-  margin-top: 70px;
-  height: 1vh;
-  width: 28vw;
+  margin-top: 3.5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 0;
-  gap: 3rem;
   .logo {
-    width: 60px;
+    width: 17%;
   }
   .top {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 0.7rem;
     width: 100%;
     .toggle {
       display: none;
     }
     .brand {
-      margin-left: 1%;
       width: 100%;
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-evenly;
       gap: 1.3rem;
       svg {
         color: #ffc107;
@@ -142,26 +139,22 @@ const Section = styled.section`
       span {
         font-size: 2rem;
         color: #fff9;
-        font-family: "Permanent Marker", cursive;
       }
     }
     .links {
-      width: 70%;
       ul {
-        width: 83%;
         list-style-type: none;
         display: flex;
         flex-direction: column;
         gap: 1rem;
         li {
-          width: 95%;
-          padding: 0.6rem 1rem;
+          padding: 0em;
           margin: 1%;
-          border-radius: 0.6rem;
+          border-radius: 0 0.7rem 0.7rem 0.3rem;
           &:hover {
-            background-color: white;
+            background-color: black;
             a {
-              color: black;
+              color: #0dcaf0;
             }
           }
           a {
@@ -169,12 +162,13 @@ const Section = styled.section`
             display: flex;
             gap: 1rem;
             color: white;
+            padding: 0.75em;
           }
         }
         .active {
-          background-color: white;
+          background-color: black;
           a {
-            color: black;
+            color: #0dcaf0;
           }
         }
       }
@@ -193,34 +187,6 @@ const Section = styled.section`
       align-items: center;
       justify-content: flex-start;
       color: white;
-    }
-  }
-  @media screen and (min-width: 280px) and (max-width: 1080px) {
-    position: initial;
-    width: 100%;
-    height: max-content;
-    padding: 1rem;
-    .top {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 1rem;
-      .toggle {
-        display: block;
-        color: white;
-        z-index: 99;
-        svg {
-          font-size: 1.4rem;
-        }
-      }
-      .brand {
-        gap: 1rem;
-        justify-content: flex-start;
-      }
-    }
-    .top > .links,
-    .logout {
-      display: none;
     }
   }
 `;

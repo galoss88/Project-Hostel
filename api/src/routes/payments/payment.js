@@ -16,7 +16,6 @@ route.post("/", async (req, res, next) => {
   let items = req.body.items;
   var user = req.body.user;
   let numero = req.body.user.identification.number;
-  console.log(req.body.user);
   try {
     //MANEJO DE ERRORES
     if (!items[0].title) return res.status(400).send("Debe tener titulo");

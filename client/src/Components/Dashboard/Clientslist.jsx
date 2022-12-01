@@ -42,7 +42,7 @@ export default function Clientlist() {
               </tr>
             </thead>
             <tbody>
-              {clientes?.map((r) => {
+              { clientes.length ? clientes?.map((r) => {
                 return (
                   <>
                     <tr key={r.id}>
@@ -98,7 +98,17 @@ export default function Clientlist() {
                     </tr>
                   </>
                 );
-              })}
+              }):
+              <tr className="container">
+               <td></td>
+               <td></td>
+               <td></td>
+              <td className="text-muted p-4">No hay Clientes registrados</td>
+               <td></td>
+               <td></td>
+               <td></td>
+            </tr>
+              }
             </tbody>
             
           </table>
