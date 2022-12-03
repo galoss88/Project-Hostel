@@ -2,31 +2,7 @@ module.exports = [
   {
     type: [{ type: "Publico" }, { type: "Privado" }],
     client: [
-      {
-        personalID: "1520",
-        name: "Pedro Sanchez",
-        nationality: "Bulgaria",
-        phoneNumber: "281",
-        email: "pedrito@gmail.com",
-        observation: "",
-      },
-
-      {
-        personalID: "3720",
-        name: "Jose Malboro",
-        nationality: "Argentina",
-        phoneNumber: "280",
-        email: "malboro@gmail.com",
-        observation: "",
-      },
-      {
-        personalID: "3314",
-        name: "Miguel Carrasco",
-        nationality: "Chile",
-        phoneNumber: "112",
-        email: "miguelito@gmail.com",
-        observation: "",
-      },
+      
     ],
     rent: [
       {
@@ -523,7 +499,7 @@ module.exports = [
       },
       {
         question:"¿Hay toque de queda?",
-        anwser:"No, los inquilinos pueden diambular por el hostel entre los horarios que ellos quieran, siempre y cuando no disturben el silencio general durante horarios de descanso."
+        anwser:"No, los inquilinos pueden deambular por el hostel entre los horarios que ellos quieran, siempre y cuando no afecte el silencio general durante horarios de descanso."
       },
       {
         question:"¿La cama viene con almohada y sabanas?",

@@ -62,7 +62,7 @@ function Navbars() {
                 height="50"
                 className="d-inline-block align-text-top bg-light rounded-1"
               />
-              <p className="m-auto ms-3">{info.hostelName}</p>
+              <p className="m-auto ms-3 nameHostel">{info.hostelName}</p>
             </div>
             {/* </div> */}
           </Link>

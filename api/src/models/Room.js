@@ -18,7 +18,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING
     },
     image: {
-      type: DataTypes.ARRAY(DataTypes.STRING)
+      type: DataTypes.ARRAY(DataTypes.STRING(1200))
     },
     bathroom: {
       type: DataTypes.BOOLEAN

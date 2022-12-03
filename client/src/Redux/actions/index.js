@@ -9,11 +9,11 @@ export const POST_OWNER = "POST_OWNER";
 export const GET_OWNER = "GET_OWNER";
 export const GET_ALL_CLIENTS = "GET_ALL_CLIENTS";
 export const GET_FAQ = "GET_FAQ";
-export const FORGET = "FORGET"
+export const FORGET = "FORGET";
 
 // const URL = "https://dinamitahostel.herokuapp.com"; //heroku
-const URL = "https://hostelproject-production.up.railway.app" //railway
-// const URL = "http://localhost:4000"; //descomentar para hacer pruebas
+  const URL = "https://hostelproject-production.up.railway.app"; //railway
+ //const URL = "http://localhost:4000"; //descomentar para hacer pruebas
 
 //ACTION ROOMS ----------------------------------------------------------->>
 export function getRooms() {
@@ -100,6 +100,7 @@ export function sendFeedback(data) {
 }
 
 export function filterTypeRoom(payloadOne, payloadTwo, payloadThree) {
+  console.log("action", payloadOne, payloadTwo)
   return {
     type: FILTER_TYPE_ROOM,
     payloadOne,
@@ -107,7 +108,6 @@ export function filterTypeRoom(payloadOne, payloadTwo, payloadThree) {
     payloadThree,
   };
 }
-
 
 //ACTIONS FILTROS---------------------------------------------------------------->>
 
@@ -166,14 +166,19 @@ export function setClient(token) {
   }
 }
 
-export function getRolUser(token){
-  try{
-   return async function(){
-    let res = await axios.get(`${URL}/rol`, {headers:{authorization:`Bearer ${token}`}})
-    localStorage.setItem("Rol", res.data.rol[0]? res.data.rol[0]: "menu-client");
-   }
-  } catch(e){
-    console.log(e)
+export function getRolUser(token) {
+  try {
+    return async function() {
+      let res = await axios.get(`${URL}/rol`, {
+        headers: { authorization: `Bearer ${token}` },
+      });
+      localStorage.setItem(
+        "Rol",
+        res.data.rol[0] ? res.data.rol[0] : "menu-client"
+      );
+    };
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -406,8 +411,8 @@ export function logicalDraft(id, token) {
     return error;
   }
 }
-export function forgetstate(){
+export function forgetstate() {
   return {
-      type: FORGET
-  }
+    type: FORGET,
+  };
 }

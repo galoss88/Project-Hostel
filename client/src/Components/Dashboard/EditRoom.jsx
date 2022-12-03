@@ -7,6 +7,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { deleteRoom, changeStatusRoom } from "../../Redux/actions";
 import { useState } from "react";
 import Table from "react-bootstrap/Table";
+import Swal from "sweetalert2";
+import Button from "react-bootstrap/esm/Button";
 
 const Edit = () => {
   const dispatch = useDispatch();
@@ -30,6 +32,42 @@ const Edit = () => {
     };
     await dispatch(deleteRoom(authorization, room));
     dispatch(getAllRooms());
+  };
+
+  const alerta = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger",
+    },
+    buttonsStyling: false,
+  });
+
+  const deleteAlert = (room) => {
+    alerta
+      .fire({
+        title: "Esta seguro de querer eliminar la habitacion?",
+        text: "Este cambio no se podra revertir",
+        showCancelButton: true,
+        confirmButtonText: "Si, elminar!",
+        cancelButtonText: "No, gracias!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          handleDelete(room);
+          alerta.fire(
+            "Habitacion eliminada!",
+            "Se ha eliminado correctamente",
+            "success"
+          );
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          alerta.fire(
+            "La habitacion NO se elimino!",
+            "Los datos siguen a salvo!",
+            "error"
+          );
+        }
+      });
   };
 
   const handleChangeStatus = async (room, statusRoom) => {
@@ -62,6 +100,7 @@ const Edit = () => {
             <th>ID: </th>
             <th>Image: </th>
             <th>Description: </th>
+            <th>Camas disponibles: </th>
             <th>Status: </th>
             <th>Activo/Inactivo: </th>
             <th>Borrar: </th>
@@ -73,7 +112,7 @@ const Edit = () => {
               <td>{room.id}</td>
               <td>
                 <img
-                  src={room.image[0]}
+                  src={room.image ? room.image[0] : room.image.map(el => el.url)}
                   style={{
                     width: "40px",
                     height: "40px",
@@ -83,6 +122,7 @@ const Edit = () => {
                 ></img>
               </td>
               <td>{room.description}</td>
+              <td>{room.beds_avalaibles}/{room.beds}</td>
               <td>{room?.status ? "inactivo" : "activo"}</td>
               <td>
                 <label className="botoncito">
@@ -97,18 +137,22 @@ const Edit = () => {
                       )
                     }
                   ></input>
-                  <span className="deslizadora"></span>
+                  <span
+                    style={{ justifyContent: "center", alingItems: "center" }}
+                    className="deslizadora"
+                  ></span>
                 </label>
               </td>
               <td className="borrar">
-                <button
+                <Button
+                  variant="danger"
                   type="button"
                   onClick={() => {
-                    handleDelete(room.id);
+                    deleteAlert(room.id);
                   }}
                 >
-                  <RiDeleteBin5Line></RiDeleteBin5Line>
-                </button>
+                  Borrar
+                </Button>
               </td>
             </tr>
           ))}

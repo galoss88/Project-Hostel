@@ -5,8 +5,7 @@ import style from "./Filters.module.css";
 import Swal from 'sweetalert2'
 
 
-
-export default function Filters({ getRooms, setData }) {
+export default function Filters({ getRooms, setData,paginate }) {
   //Estados -------------------------------------------------->>
   const dispatch = useDispatch(); 
   //Estados locales donde se guardan los value de los select de los filtros!!  (Que despues se hace dispatch en el momento de filtrar) ------------->>
@@ -57,7 +56,7 @@ export default function Filters({ getRooms, setData }) {
     if (e.target.name === "typeBatchroom") {
      
       localStorage.setItem("selectTypeBatchRoom",JSON.stringify(e.target.value)) //asdasdasdasdasd - - -- - - - -- - - - - -- - (-)
-      JSON.parse(localStorage.getItem("selectTypeBatchRoom"))? setType(JSON.parse(localStorage.getItem("selectTypeBatchRoom"))):setType(e.target.value)
+      JSON.parse(localStorage.getItem("selectTypeBatchRoom"))? setTypeBatchroom(JSON.parse(localStorage.getItem("selectTypeBatchRoom"))):setTypeBatchroom(e.target.value)
       
       return setTypeBatchroom(e.target.value);
     }
@@ -87,7 +86,9 @@ export default function Filters({ getRooms, setData }) {
         text: 'No hay camas disponibles',
       }) }
       else{
+        console.log(type)
         dispatch(filterTypeRoom(type, typeBatchroom, price));
+        paginate(1)
         setData(true);
       }
   }
@@ -95,12 +96,13 @@ export default function Filters({ getRooms, setData }) {
   //FUNCION PARA RECARGAR FILTROS!!! ------------------------------------------>>
   function recargarFiltros(e) {
     e.preventDefault();
-    
+    paginate(1)
     setType("");
     setTypeBatchroom("");
     setPrice("");
     putRooms()
     setData(true)
+   
     dispatch(getRooms());
   }
 
@@ -122,8 +124,8 @@ export default function Filters({ getRooms, setData }) {
             <option value="Todo" hidden>
               Tipo de habitación
             </option>
+            <option value="roomPublic">Publico</option>
             <option value="roomPrivate">Privado</option>
-            <option value="roomPublic">Público</option>
           </select>
         </li>
 {/* SELECT TIPO DE BAÑO----------------------------------------------->> */}

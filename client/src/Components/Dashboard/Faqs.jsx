@@ -41,30 +41,35 @@ export default function Faqs (){
         })
     }
 
-async function handleDelete(e){
-      e.preventDefault()
+    async function deleteFaq(id) {
       const token = await getAccessTokenSilently();
-       Swal.fire({
-        title: 'Eliminar pregunta frecuente',
-        text: "¡No podrás revertir esto!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: '¡Sí, bórralo!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(delteFaq(token, e.target.id))
-          Swal.fire(
-            '¡Eliminado!',
-            'tu pregunta frecuente han sido eliminadas de la lista',
-            'success'
-          )
-        }
-        dispatch(getFaq());
-      })
+      await  dispatch(delteFaq(token, id))
+        dispatch(getFaq())
+   }
 
-    } 
+
+async function handleDelete(e){
+     e.preventDefault()
+      Swal.fire({
+       title: 'Eliminar pregunta frecuente',
+       text: "¡No podrás revertir esto!",
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+       confirmButtonText: '¡Sí, bórralo!'
+     }).then((result) => {
+       if (result.isConfirmed) {
+         deleteFaq(e.target.id)
+         Swal.fire(
+           '¡Eliminado!',
+           'tu pregunta frecuente han sido eliminadas de la lista',
+           'success'
+         )
+       }
+     })
+
+   }
 
     
     useEffect(() => {

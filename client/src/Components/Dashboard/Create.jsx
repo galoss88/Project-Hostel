@@ -60,11 +60,10 @@ const Create = (props) => {
           let imagenUpload = image.array;
           imagenUpload.push({ url: fileURL, id });
           const nuevoObjeto = { ...image, imagenUpload };
-          console.log(nuevoObjeto);
           setImage(nuevoObjeto);
           setRoom({
             ...room,
-            image: image,
+            image: [nuevoObjeto],
           });
         });
     });
@@ -148,8 +147,10 @@ const Create = (props) => {
 
           const nuevoObjeto = { ...image, array: filterURL[0] };
           setImage(nuevoObjeto);
-          setRoom({ image: nuevoObjeto });
-
+          setRoom({
+            ...room,
+            image: [nuevoObjeto],
+          });
           alertaSeguro.fire(
             "Borrado!",
             "La imagen ha sido borrada correctamente",
@@ -163,6 +164,8 @@ const Create = (props) => {
           );
         }
       });
+
+    console.log(foto);
   }
   // VALIDATIONS //
 
@@ -173,7 +176,6 @@ const Create = (props) => {
       !room.beds ||
       !room.bathroom ||
       !room.description ||
-      !room.image ||
       !room.price ||
       !room.typeId
     ) {
@@ -182,6 +184,11 @@ const Create = (props) => {
         title: "Debes completar todos los datos!",
       });
     } else {
+      // setRoom({
+      //   ...room,
+      //   image: [image.array]
+      // })
+      console.log(room);
       dispatch(createRoom(room));
       Swal.fire({
         icon: "success",
@@ -190,7 +197,7 @@ const Create = (props) => {
       setRoom({
         beds: "",
         description: "",
-        image: "",
+        image: [],
         bathroom: "",
         observation: "",
         price: "",
@@ -208,15 +215,15 @@ const Create = (props) => {
   // RENDER //
   return (
     <div>
-      <div className="box-create" style={{ backgroundColor: "#bdbdbd" }}>
+      <div className="box-create" style={{ backgroundColor: "#212529" }}>
         <Form
           onSubmit={(e) => handleSubmit(e)}
           style={{ width: "80%", display: "flex", flexDirection: "column" }}
           className="create-form"
         >
           <h2>Creacion de habitaciones: </h2>
-          <Row className="d-flex justify-content-between">
-            <Form.Group as={Col} md="3">
+          <Row className="d-flex justify-content-around">
+            <Form.Group as={Col} md="4">
               <Form.Label>Tipo (*): </Form.Label>
               <Form.Select onChange={(e) => handleTipoSelect(e)}>
                 <option>Elegir tipo de Habitacion</option>
@@ -224,7 +231,7 @@ const Create = (props) => {
                 <option value="2">Privada</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group as={Col} md="3">
+            <Form.Group as={Col} md="4">
               <Form.Label>Baño (*): </Form.Label>
               <Form.Select onChange={(e) => handlebañoSelect(e)}>
                 <option>Elegir tipo de baño</option>
@@ -232,23 +239,10 @@ const Create = (props) => {
                 <option value="False">Compartido</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group as={Col} md="3">
-              <Form.Label>Precio (*): </Form.Label>
-              <Form.Control
-                type="number"
-                min="1"
-                max="100000"
-                name="price"
-                defaultValue=""
-                value={room.price}
-                onChange={handleChange}
-                isV
-              />
-            </Form.Group>
           </Row>
           <br />
-          <Row className="d-flex justify-content-between">
-            <Form.Group as={Col} md="6">
+          <Row className="d-flex justify-content-around">
+            <Form.Group as={Col} md="4">
               <Form.Label>Descripcion (*): </Form.Label>
               <Form.Control
                 as="textarea"
@@ -258,7 +252,7 @@ const Create = (props) => {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group as={Col} md="5">
+            <Form.Group as={Col} md="4">
               <Form.Label>Observaciones: </Form.Label>
               <Form.Control
                 as="textarea"
@@ -270,8 +264,8 @@ const Create = (props) => {
             </Form.Group>
           </Row>
           <br />
-          <Row className="d-flex justify-content-between">
-            <Form.Group as={Col} md="3">
+          <Row className="d-flex justify-content-around">
+            <Form.Group as={Col} md="4">
               <Form.Label>Cama simple (*): </Form.Label>
               <Form.Control
                 type="number"
@@ -284,7 +278,7 @@ const Create = (props) => {
                 }}
               />
             </Form.Group>
-            <Form.Group as={Col} md="3">
+            <Form.Group as={Col} md="4">
               <Form.Label>Camas cuchetas (*): </Form.Label>
               <Form.Control
                 type="number"
@@ -297,8 +291,23 @@ const Create = (props) => {
                 }}
               />
             </Form.Group>
-            <Form.Group as={Col} md="3">
-              <Form.Label>Camas Totales:</Form.Label>
+          </Row>
+          <Row className="justify-content-around">
+            <Form.Group as={Col} md="4">
+              <Form.Label>Precio (*): </Form.Label>
+              <Form.Control
+                type="number"
+                min="1"
+                max="100000"
+                name="price"
+                value={room.price}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group as={Col} md="4">
+              <Form.Label style={{ display: "flex", justifyContent: "center" }}>
+                Camas Totales:
+              </Form.Label>
               <Form.Control
                 disabled
                 type="number"
@@ -310,7 +319,7 @@ const Create = (props) => {
               />
             </Form.Group>
           </Row>
-          <Row className="d-flex justify-content-center">
+          <Row className="d-flex justify-content-around">
             <Form.Group as={Col} md="5">
               <Dropzone
                 className="dropzone"
@@ -329,36 +338,30 @@ const Create = (props) => {
                 )}
               </Dropzone>
             </Form.Group>
-          </Row>
-          <Row>
-            <div>
-              <Carousel>
-                {image.array?.map((foto, index) => {
-                  return (
-                    <Carousel.Item key={index}>
-                      <>
-                        <img
-                          className="rounded mx-auto d-block"
-                          src={`${foto.url}`}
-                          alt=""
-                          style={{
-                            width: "400px",
-                            height: "300px",
-                            objectFit: "cover",
-                          }}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteImage(foto.id)}
-                          className="rounded mx-auto d-block"
-                        >
-                          <RiDeleteBin5Line />
-                        </button>
-                      </>
-                    </Carousel.Item>
-                  );
-                })}
-              </Carousel>
+            <div className="imgup">
+              {/* <Carousel> */}
+              {image.array?.map((foto, index) => {
+                return (
+                  <div className="" key={index}>
+                    <img
+                      className="imgCreate rounded mx-auto d-block"
+                      src={`${foto.url}`}
+                      alt="Img"
+                    />
+                    <Button
+                      type="button"
+                      className="btn-danger"
+                      style={{ display: "flex", width: "95%", margin: "auto" }}
+                      onClick={() => handleDeleteImage(foto.id)}
+                    >
+                      <RiDeleteBin5Line />
+                    </Button>
+                  </div>
+
+                  // </Carousel.Item>
+                );
+              })}
+              {/* </Carousel> */}
             </div>
           </Row>
 
@@ -381,3 +384,4 @@ const Create = (props) => {
 };
 
 export default Create;
+

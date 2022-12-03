@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
       primaryKey: true
     },
     dateReserva: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
     },
     dateIn: {
         type: DataTypes.STRING,

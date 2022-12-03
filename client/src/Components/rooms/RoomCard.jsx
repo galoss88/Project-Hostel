@@ -13,10 +13,10 @@ export default function RoomCard({
 }) {
   let typeRoom = "";
 
-  if (type === "Publico") {
+  if (type === 1) {
     typeRoom = "compartida";
-  } else if (type === "Privado") {
-    typeRoom = "privada";
+  } else if (type === 2) {
+    typeRoom = "Privado";
   }
 
   return (
@@ -32,10 +32,10 @@ export default function RoomCard({
         ></img>
         <div className="col-md-9 " style={{paddingLeft: "2vw"}} >
           <h2 className="tittle text-white ms-0">
-            Habitación {type === "Privado" ? "privada" : "compartida"}
+            Habitación {type === 2 ? "privada" : "compartida"}
           </h2>
           <h4 className="text-white-50">
-            {" "}
+            
             {beds_avalaibles >= 1 && !status
               ? "Camas disponibles: " + beds_avalaibles
               : "Habitacion no disponible"}

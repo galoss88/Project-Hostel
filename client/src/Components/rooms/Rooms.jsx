@@ -10,12 +10,12 @@ export default function Rooms() {
   const dispatch = useDispatch();
   //Almacenamos estado rooms de redux en variable allRooms ---------------------------------------->>
   let allRooms = useSelector((state) => state.allRooms);
-
+  let rooms = useSelector(state=>state.rooms)
   const [page, setPage] = useState(1);
   const [roomsPerPage, setRoomsPerPage] = useState(7);
   const lastPage = page * roomsPerPage;
   const firstPage = lastPage - roomsPerPage;
-  const currentPage = allRooms?.slice(firstPage, lastPage);
+  const currentPage = JSON.parse(localStorage.getItem("filtros"))?.slice(firstPage, lastPage)
 
   const paginate = (pages) => {
     setPage(pages);
@@ -30,7 +30,7 @@ export default function Rooms() {
   const [data, setData] = useState(true);
 
   //VARIABLE CON LAS ROOMS ACTUALES QUE SE VAN A RENDERIZAR !!! ------------->>
-  let roomsCurrent = JSON.parse(localStorage.getItem("filtros")) || currentPage;
+  let roomsCurrent = currentPage|| allRooms.slice(firstPage, lastPage);
 
   //-------------------------------------------------------------------------
   //Renderizo componente cada vez que obtengo informacion de localStorage!!.Se ejecuita ante cada cambio en data, que se cambia a true al hacer un SUBMIT de los filtros
@@ -44,7 +44,7 @@ export default function Rooms() {
 
   return (
     <div>
-      <Filters getRooms={getRooms} setData={setData} />
+      <Filters getRooms={getRooms} setData={setData} paginate={paginate} />
       <div className="container">
         <div className="row">
           {roomsCurrent &&
@@ -57,12 +57,12 @@ export default function Rooms() {
                     image={e.image}
                     bathroom={e.bathroom}
                     id={e.id}
-                    type={e.type?.type}
+                    type={e.type?.id}
                     price={e.price}
                     beds_avalaibles={e.beds_avalaibles}
                     status={e.status}
                   />
-                  {console.log}
+                  
                 </div>
               );
             })}
@@ -70,7 +70,7 @@ export default function Rooms() {
           <div className="row mx-auto">
             <Paginate
               roomsPerPage={roomsPerPage}
-              allRooms={allRooms?.length}
+              allRooms={rooms?.length}
               paginate={paginate}
               page={page}
             />

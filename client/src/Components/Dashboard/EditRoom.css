@@ -44,41 +44,30 @@ th {
 
 .botoncito {
   position: relative;
-
   display: inline-block;
-
   width: 3.6rem;
-
   height: 2rem;
 }
 
 .botoncito input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
-
   width: 0;
-
   height: 0;
-
   background-color: red;
 }
 
 .deslizadora {
   position: absolute;
-
   cursor: pointer;
-
   top: 0;
-
   left: 0;
-
   right: 0;
-
   bottom: 0;
-
   background-color: #34a853;
-
   transition: 0.4s;
-
   color: grey;
 }
 
@@ -114,15 +103,4 @@ input:checked + .deslizadora:before {
   justify-content: center;
   align-items: center;
   min-height: 56px;
-}
-
-.borrar button{
-  border-radius: 3px;
-  width: 36px;
-  height: 27px;
-}
-
-.borrar button:hover{
-  background-color: red;
-  color: black;
 }

@@ -178,8 +178,8 @@ async function statusUser() {
                  onClick={() => {
                    setShow1(true);
                  }}
-                 style={{position: "fixed", top: "8.5%", left: ".5%", width: "55px", height: "50px", padding: "5px", }}
-                className="btn btn-dark fas fa-cog"
+                //  style={}
+                className={`${style.adminBTN} btn btn-dark fas fa-cog`}
                >
                 <IconContext.Provider value={{ size: "30"}}>
                 <BiCog />
@@ -190,7 +190,9 @@ async function statusUser() {
 
           {isAuthenticated ? (
             <>
-            <Offcanvas show={show1} onHide={() =>{setShow1(false)}} style={{backgroundColor: "#212121"}}>
+            <Offcanvas show={show1} onHide={() =>{setShow1(false)}} placement="end" style={{backgroundColor: "#212121", gap:"3rem"}}>
+              <Offcanvas.Header closeButton>
+              </Offcanvas.Header>
               <Sidebar></Sidebar>
             </Offcanvas>
             {

@@ -35,18 +35,54 @@ justify-content: center;
 align-items: center;
 }
 
-.borrarImagen{
-  display: flex;
-  margin: 0 10px;
-  justify-content: center;
-}
 
 .borrarImagen:hover{
-  background-color: red;
-  color: rgb(80, 79, 79);
+  color: #504f4f;
 }
 
 .totales{
   border: 3px solid black;
   border-radius:50%;
+}
+
+.box-create label{
+  color:white;
+  display: flex;
+  justify-content: center;
+}
+
+.borrarFoto{
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  border-radius: 10px;
+  top: -15px;
+  right: 5px;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.xdawod{
+  margin-top: 15px;
+  position: relative;
+}
+
+.borrarFoto:hover{
+  color: #bab7b7;
+}
+
+.imgup{
+  background-color: #151515;
+  border-radius: 4px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.imgup .imgCreate{
+  position: relative;
+  width: 200px;
+  height: 140px;
+  padding: 10px;
 }

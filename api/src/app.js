@@ -66,6 +66,7 @@ io.on('connection', (socket) => {
 
   socket.on('userBanned', (obj) => {
     Client.update({ status: obj.state }, { where: { email: obj.user } })
+    Client.update({ con: 'Disconnected' }, { where: { email: obj.user } })
     socket.emit("newUserLogin", 'xd')
     const filtro = userConnect.filter((e) => e.user == obj.user)
     filtro.map((e) => {

@@ -10,7 +10,7 @@ import { BsFillPencilFill } from "react-icons/bs";
 /////////////////
 import "./RoomDetail.css";
 import axios from "axios";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { getRoomDetail } from "../../Redux/actions";
@@ -62,7 +62,7 @@ export default function RoomDetail() {
   const userLogin = useAuth0();
 
   let { id } = useParams();
- 
+ let navigate = useNavigate()
   
   useEffect(() =>{
     dispatch(getAllCountries());
@@ -71,7 +71,7 @@ export default function RoomDetail() {
     socket.emit('roomView', id)
     socket.on('payRoom',(data)=> setPayAvalible(data.status));
     socket.on('userPay',(data)=>{
-      if(data.user != userLogin.user.email) setPayAvalible(data.status)
+      if(data.user != userLogin.user?.email) setPayAvalible(data.status)
     })
     socket.on('userPayC',(data)=> setPayAvalible(data.status));
     return () =>{
@@ -239,6 +239,7 @@ export default function RoomDetail() {
     return (
 
     <div className='detailRoom mx-auto'>
+      <input className="btn btn-primary" onClick={(e)=>navigate(-1)} type="button" value="Atras"/>
              {
                 // CONTROL DE DATOS DE USUARIO 
            <Modal show={show} onHide={handleClose}>
@@ -250,6 +251,7 @@ export default function RoomDetail() {
                 ( !client.nacionality || !client.phoneNumber || !client.email) && 
                 (<p>Por favor complete con los datos faltantes</p>)
              }
+             
              <Form onSubmit={e=> handleSubmit(e) }>
                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                  <Form.Label>Nombre</Form.Label>

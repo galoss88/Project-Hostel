@@ -11,7 +11,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PORT } = process.env;
 //     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 //   }
 // );
-// 5432
+// // 5432
 
 const sequelize = new Sequelize({
   database: DB_NAME,

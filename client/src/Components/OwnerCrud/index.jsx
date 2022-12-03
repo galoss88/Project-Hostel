@@ -8,6 +8,7 @@ import style from './style.module.css'
 import { postOwner,getOwner } from "../../Redux/actions";
 import {useDispatch, useSelector} from "react-redux"
 import { useAuth0 } from "@auth0/auth0-react";
+import Swal from 'sweetalert2'
 
 export default function OwnerCrud() {
   const {isAuthenticated, getAccessTokenSilently} = useAuth0();
@@ -47,7 +48,11 @@ export default function OwnerCrud() {
       }
       await dispatch(postOwner(owner, authorization))
       await getOwnerF()
-      alert("Datos guardados")
+      Swal.fire({
+        icon: 'success',
+        title: 'Success...',
+        text: 'Datos guardados correctamente',
+      })
     }
   };
 
